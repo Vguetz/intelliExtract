@@ -8,13 +8,11 @@ import Providers from '@/components/Providers'
 import "react-loading-skeleton/dist/skeleton.css"
 import "simplebar-react/dist/simplebar.min.css"
 import { Toaster } from '@/components/ui/toaster'
+import { constructMetadata } from '@/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'IntelliExtract',
-  description: 'The next way to read your PDF',
-}
+export const metadata = constructMetadata()
 
 export default function RootLayout({
   children,
