@@ -56,7 +56,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
     return (
         <div className="w-full bg-white rounded-md shadow flex flex-col items-center">
             {/* top bar */}<div className="h-14 w-full border-b border-zinc-200 flex items-center justify-between px-2">
-                <div className="flex items-center gap-1.5" >
+                <div className="flex items-center gap-1.5 " >
                     <Button
                         disabled={currPage <= 1}
                         onClick={() => {
@@ -67,7 +67,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
                         variant='ghost'
                         aria-label='previous page'>
                         <ChevronDownIcon
-                            className="h-4 w-4" />
+                            className="h-4 w-4 " />
                     </Button>
 
                     <div className="flex items-center gap-1.5" >
@@ -112,7 +112,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
                     </DropdownMenu>
 
                     <Button onClick={() => setRotation((prev) => prev + 90)} variant='ghost' aria-label="rotate 90 degrees">
-                        <RotateCw className="h-4 w-4" />
+                        <RotateCw className="h-4 w-4 " />
                     </Button>
                     <PdfFullScreen fileUrl={url} />
                 </div>
@@ -121,7 +121,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             <div className="flex-1 w-full max-h-screen" >
                 <SimpleBar
                     autoHide={false}
-                    className="max-h-[calc(100vh-10rem)]" >
+                    className=" max-h-[calc(100vh-10rem)]" >
                     <div ref={ref}>
                         <Document loading={
                             <div className="flex justify-center" >
