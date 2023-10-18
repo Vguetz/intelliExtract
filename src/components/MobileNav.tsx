@@ -1,93 +1,53 @@
-'use client';
+"use client"
 
-import { LoginLink, LogoutLink, RegisterLink } from '@kinde-oss/kinde-auth-nextjs/server';
-import { ArrowRight, Menu } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { FC, useEffect, useState } from 'react';
+import { ArrowRight, Menu } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
-interface MobileNavProps {
-    isAuth: boolean;
-}
-
-const MobileNav: FC<MobileNavProps> = ({ isAuth }) => {
-    const [isOpen, setOpen] = useState<boolean>(false);
-
-    const toggleOpen = () => setOpen(!isOpen);
-
-    const pathname = usePathname();
-
+const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
+    const [isOpen, setOpen] = useState<boolean>(false)
+    const toggleOpen = () => setOpen((prev) => !prev)
+    const pathname = usePathname()
     useEffect(() => {
-        if (isOpen) toggleOpen();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pathname]);
+        if (isOpen) toggleOpen()
+    }, [pathname])
 
     const closeOnCurrent = (href: string) => {
         if (pathname === href) {
-            toggleOpen();
+            toggleOpen()
         }
-    };
-
+    }
     return (
         <div className="sm:hidden">
-            <Menu
-                onClick={toggleOpen}
-                className="relative z-50 h-5 w-5 text-zinc-700"
-            />
+            <Menu onClick={toggleOpen} className="relative z-50 h-5 w-5 text-zinc-700" />
+
             {isOpen ? (
-                <div className="fixed animate-in slide-in-from-top-5 fade-in-20 inset-0 z-0 w-full">
-                    <ul className="absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8">
+                <div className="fixed animate-in slide-in-from-top-5 fade-in-20 inset-0 z-0 w-full" >
+                    <ul className="absolute bg-white border-b border-zinc-200 shadow-xl grid w-full gap-3 px-10 pt-20 pb-8" >
                         {!isAuth ? (
                             <>
                                 <li>
-                                    <RegisterLink
-                                        className="flex items-center w-full font-semibold text-green-600"
-                                    >
-                                        Get Started
-                                        <ArrowRight className="ml-2 h-5 w-5" />
-                                    </RegisterLink>
+                                    <Link onClick={() => closeOnCurrent('/sign-up')} className="flex items-center w-full font-semibold text-green-600" href='/sign-up'>Get Started <ArrowRight className="ml-2 h-5 w-5" /></Link>
                                 </li>
                                 <li className="my-3 h-px w-full bg-gray-300" />
                                 <li>
-                                    <LoginLink
-                                        className="flex items-center w-full font-semibold"
-                                    >
-                                        Sign in
-                                    </LoginLink>
+                                    <Link onClick={() => closeOnCurrent('/sign-in')} className="flex items-center w-full font-semibold" href='/sign-in'>Sign In</Link>
                                 </li>
                                 <li className="my-3 h-px w-full bg-gray-300" />
                                 <li>
-                                    <Link
-                                        onClick={() =>
-                                            closeOnCurrent('/pricing')
-                                        }
-                                        href="/pricing"
-                                        className="flex items-center w-full font-semibold"
-                                    >
-                                        Pricing
-                                    </Link>
+                                    <Link onClick={() => closeOnCurrent('/pricing')} className="flex items-center w-full font-semibold" href='/pricing'>Pricing</Link>
                                 </li>
+
                             </>
                         ) : (
                             <>
                                 <li>
-                                        <Link
-                                            onClick={() =>
-                                                closeOnCurrent('/dashboard')
-                                            }
-                                            href="/dashboard"
-                                            className="flex items-center w-full font-semibold"
-                                        >
-                                            Dashboard
-                                        </Link>
+                                        <Link onClick={() => closeOnCurrent('/dashboard')} className="flex items-center w-full font-semibold" href='/dashboard'>Dashboard</Link>
                                 </li>
                                 <li className="my-3 h-px w-full bg-gray-300" />
                                 <li>
-                                        <LogoutLink
-                                            className="flex items-center w-full font-semibold"
-                                        >
-                                            Sign out
-                                        </LogoutLink>
+                                        <Link className="flex items-center w-full font-semibold" href='/sign-out'>Sign Out</Link>
                                 </li>
                             </>
                         )}
@@ -95,7 +55,7 @@ const MobileNav: FC<MobileNavProps> = ({ isAuth }) => {
                 </div>
             ) : null}
         </div>
-    );
-};
+    )
+}
 
-export default MobileNav;
+export default MobileNav
