@@ -11,6 +11,7 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
     const pathname = usePathname()
     useEffect(() => {
         if (isOpen) toggleOpen()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pathname])
 
     const closeOnCurrent = (href: string) => {
@@ -47,11 +48,11 @@ const MobileNav = ({ isAuth }: { isAuth: boolean }) => {
                                 </li>
                                 <li className="my-3 h-px w-full bg-gray-300" />
                                 <li>
-                                        <Link className="flex items-center w-full font-semibold" href='/sign-out'>Sign Out</Link>
+                                        <Link onClick={() => closeOnCurrent('/pricing')} className="flex items-center w-full font-semibold" href='/pricing'>Pricing</Link>
                                 </li>
                                     <li className="my-3 h-px w-full bg-gray-300" />
                                     <li>
-                                        <Link onClick={() => closeOnCurrent('/pricing')} className="flex items-center w-full font-semibold" href='/pricing'>Pricing</Link>
+                                        <Link onClick={() => closeOnCurrent('/log-out')} className="flex items-center w-full font-semibold" href='/log-out'>Log out</Link>
                                     </li>
 
                             </>

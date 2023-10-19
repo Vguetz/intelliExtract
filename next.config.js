@@ -11,7 +11,12 @@ const nextConfig = {
                 source: "/sign-up",
                 destination: "/api/auth/register",
                 permanent: true,
-            }
+            },
+            {
+                source: "/log-out",
+                destination: "/api/auth/logout",
+                permanent: true,
+            },
         ]
     },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {

@@ -65,6 +65,7 @@ const UserAccountNav = async ({ email, imageUrl, name }: UserAccountNavProps) =>
 
         </DropdownMenu>
     )
+
 }
 
 export default UserAccountNav
