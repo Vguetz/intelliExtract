@@ -136,7 +136,6 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 
                             <input
                                 {...getInputProps}
-                                disabled
                                 type="file"
                                 id="dropzone-file"
                                 className="hidden"
